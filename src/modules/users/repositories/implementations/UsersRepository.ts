@@ -36,7 +36,7 @@ export class UsersRepository implements IUsersRepository {
     return await this.repository.query(
       `SELECT *
        FROM users
-       WHERE LOWER("first_name")=LOWER(${first_name}) AND 
-             LOWER("last_name")=LOWER(${last_name})`); 
+       WHERE LOWER("first_name")=LOWER($1)
+       AND LOWER("last_name")=LOWER($2)`, [first_name, last_name]); 
   }
 }
